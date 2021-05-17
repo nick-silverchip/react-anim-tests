@@ -1,32 +1,28 @@
 import React, { useEffect, useState, useRef } from "react";
 
-export default function DelayedRender({ children = 0, delay = 100 }) {
+export default function DelayedRender({
+  children = 0,
+  delay = 100,
+  customStyles = {},
+  placeholderCustomStyles = {},
+}) {
   const [step, setStep] = useState(0);
   const flexRef = useRef(document.createElement("div"));
 
   const flexStyles = {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    flex: 1,
-    minWidth: "10rem",
-    minHeight: "10rem",
-    margin: "0.5rem",
-    animationName: "fade-in",
-    animationDelay: `${delay}ms`,
     opacity: step > 0 ? 1 : 0,
-    overflow: "hidden",
     transition: `opacity ${delay}ms ease`,
+    ...customStyles,
   };
 
   const placeholderStyles = {
+    pointerEvents: "none",
     position: "absolute",
     width: flexRef.current.clientWidth,
     height: flexRef.current.clientHeight,
-    backgroundColor: "#999999",
-    borderRadius: "8px",
     opacity: step > 1 ? 1 : 0,
     transition: `opacity ${delay}ms ease`,
+    ...placeholderCustomStyles,
   };
 
   useEffect(() => {
