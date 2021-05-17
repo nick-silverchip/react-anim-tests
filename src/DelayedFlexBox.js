@@ -2,16 +2,17 @@ import React, { useEffect, useState, useRef } from "react";
 
 export default function DelayedRender({
   children = 0,
-  delay = 100,
   customStyles = {},
   placeholderCustomStyles = {},
+  transition = 25,
+  index = 1,
 }) {
   const [step, setStep] = useState(0);
   const flexRef = useRef(document.createElement("div"));
 
   const flexStyles = {
     opacity: step > 0 ? 1 : 0,
-    transition: `opacity ${delay}ms ease`,
+    transition: `opacity ${transition}ms ease`,
     ...customStyles,
   };
 
@@ -21,18 +22,18 @@ export default function DelayedRender({
     width: flexRef.current.clientWidth,
     height: flexRef.current.clientHeight,
     opacity: step > 1 ? 1 : 0,
-    transition: `opacity ${delay}ms ease`,
+    transition: `opacity ${transition}ms ease`,
     ...placeholderCustomStyles,
   };
 
   useEffect(() => {
     const stepper = setInterval(() => {
       if (step < 3) setStep(step + 1);
-    }, delay);
+    }, transition * index);
     return () => {
       clearInterval(stepper);
     };
-  }, [step, delay]);
+  }, [step, index, transition]);
 
   return (
     <div ref={flexRef} style={flexStyles}>

@@ -41,7 +41,8 @@ function App() {
           <DelayedFlexBox
             key={i}
             placeholder={placeholder}
-            delay={(i + 1) * 25}
+            transition={15}
+            index={i + 1}
             customStyles={flexBoxStyles}
             placeholderCustomStyles={placeholderStyles}
           >
