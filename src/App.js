@@ -1,8 +1,6 @@
 import "./App.css";
 import DelayedFlexBox from "./DelayedFlexBox";
 
-const placeholder = <div className="card placeholder" />;
-
 function App() {
   const n = [
     "Card 1",
@@ -40,7 +38,6 @@ function App() {
         {n.map((item, i) => (
           <DelayedFlexBox
             key={i}
-            placeholder={placeholder}
             transition={15}
             index={i + 1}
             customStyles={flexBoxStyles}

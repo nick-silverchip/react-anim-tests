@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 
-export default function DelayedRender({
+export default function DelayedFlexBox({
   children = 0,
   customStyles = {},
   placeholderCustomStyles = {},
