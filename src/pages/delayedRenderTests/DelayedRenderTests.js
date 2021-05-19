@@ -14,20 +14,6 @@ function DelayedRenderTests() {
     "Card 10",
   ];
 
-  const flexBoxStyles = {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    flex: 1,
-    minWidth: "10rem",
-    minHeight: "10rem",
-    margin: "0.5rem",
-  };
-
-  const placeholderStyles = {
-    borderRadius: "8px",
-  };
-
   return (
     <div className="page delayed-render-tests">
       <h1>React Animation Tests</h1>
@@ -38,8 +24,7 @@ function DelayedRenderTests() {
             key={i}
             transition={15}
             index={i + 1}
-            customStyles={flexBoxStyles}
-            placeholderCustomStyles={placeholderStyles}
+            customClass="flex-card"
           >
             <div className="card">{item}</div>
           </DelayedRender>

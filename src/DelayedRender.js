@@ -31,6 +31,7 @@ export default function DelayedRender({
     const stepper = setInterval(() => {
       if (step < 3) setStep(step + 1);
     }, transition * index);
+
     return () => {
       clearInterval(stepper);
     };
