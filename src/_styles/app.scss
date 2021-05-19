@@ -1,8 +1,9 @@
 body,
 html {
   background-color: $main-background;
-  font-family: "Eurostile Extended";
+  font-family: "Eurostile Extended", sans-serif;
   text-transform: uppercase;
+  font-weight: 600;
 }
 .App {
   text-align: center;

@@ -1,4 +1,4 @@
-import DelayedRender from "../../DelayedRender";
+import DelayedRender from "../../components/delayedRender/DelayedRender";
 
 function DelayedRenderTests() {
   const n = [
