@@ -4,11 +4,18 @@
   justify-content: flex-start;
   align-items: flex-start;
   flex-wrap: wrap;
-}
 
-.card {
-  flex: 1;
-  border: 1px solid;
-  border-radius: 8px;
-  padding: 1rem;
+  .delayed-render {
+    .card {
+      flex: 1;
+      border: 1px solid;
+      border-radius: 8px;
+      padding: 1rem;
+    }
+
+    .placeholder {
+      border-radius: 8px;
+      background-color: $light-grey;
+    }
+  }
 }

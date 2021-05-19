@@ -1,0 +1,12 @@
+.delayed-render {
+  transition: opacity 25ms ease;
+
+  .placeholder {
+    pointer-events: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    transition: opacity 25ms ease;
+  }
+}

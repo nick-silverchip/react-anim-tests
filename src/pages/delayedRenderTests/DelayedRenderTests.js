@@ -25,7 +25,6 @@ function DelayedRenderTests() {
   };
 
   const placeholderStyles = {
-    backgroundColor: "#999999",
     borderRadius: "8px",
   };
 

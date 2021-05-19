@@ -37,9 +37,15 @@ export default function DelayedRender({
   }, [step, index, transition]);
 
   return (
-    <div className={customClass} ref={flexRef} style={flexStyles}>
+    <div
+      className={`delayed-render ${customClass}`}
+      ref={flexRef}
+      style={flexStyles}
+    >
       {step > 2 && children}
-      {step < 3 && <div style={placeholderStyles}></div>}
+      {step < 3 && (
+        <div className={`placeholder`} style={placeholderStyles}></div>
+      )}
     </div>
   );
 }
