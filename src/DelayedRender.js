@@ -1,20 +1,45 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 
-export default function DelayedRender({ children, placeholder, delay = 0 }) {
-  const [loading, setIsLoading] = useState(delay > 0 ? true : false);
+export default function DelayedRender({
+  children = 0,
+  customStyles = {},
+  placeholderCustomStyles = {},
+  transition = 25,
+  index = 1,
+  customClass = "",
+}) {
   const [step, setStep] = useState(0);
+  const flexRef = useRef(document.createElement("div"));
+
+  const flexStyles = {
+    opacity: step > 0 ? 1 : 0,
+    transition: `opacity ${transition}ms ease`,
+    ...customStyles,
+  };
+
+  const placeholderStyles = {
+    pointerEvents: "none",
+    position: "absolute",
+    width: flexRef.current.clientWidth,
+    height: flexRef.current.clientHeight,
+    opacity: step > 1 ? 1 : 0,
+    transition: `opacity ${transition}ms ease`,
+    ...placeholderCustomStyles,
+  };
 
   useEffect(() => {
     const stepper = setInterval(() => {
       if (step < 3) setStep(step + 1);
-    }, delay);
+    }, transition * index);
     return () => {
       clearInterval(stepper);
     };
-  }, [step, delay]);
+  }, [step, index, transition]);
 
-  if (step === 0) return <div>0</div>;
-  else if (step === 1) return <div>1</div>;
-  else if (step === 2) return <div>2</div>;
-  return <>{step}</>;
+  return (
+    <div className={customClass} ref={flexRef} style={flexStyles}>
+      {step > 2 && children}
+      {step < 3 && <div style={placeholderStyles}></div>}
+    </div>
+  );
 }

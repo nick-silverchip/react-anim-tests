@@ -1,5 +1,5 @@
-import "./App.css";
-import DelayedFlexBox from "./DelayedFlexBox";
+import "./_styles/main.scss";
+import DelayedRenderTests from "./pages/delayedRenderTests/DelayedRenderTests";
 
 function App() {
   const n = [
@@ -32,21 +32,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>React Animation Tests</h1>
-      <p>(Refresh page to see animation)</p>
-      <section className="card-container">
-        {n.map((item, i) => (
-          <DelayedFlexBox
-            key={i}
-            transition={15}
-            index={i + 1}
-            customStyles={flexBoxStyles}
-            placeholderCustomStyles={placeholderStyles}
-          >
-            <div className="card">{item}</div>
-          </DelayedFlexBox>
-        ))}
-      </section>
+      <DelayedRenderTests />
     </div>
   );
 }
